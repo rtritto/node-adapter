@@ -25,7 +25,7 @@
   },
   "exports": {
     "require": "./dist/cjs/index.js",
-    "import": "./dist/index.js",
+    "import": "./src/index.ts",
     "node": "./dist/index.js",
     "default": "./dist/index.js"
   },
