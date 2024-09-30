@@ -133,7 +133,7 @@ export const node =
             })
 
             const set: Context['set'] = {
-                status: 200,
+                status: 404,
                 headers: {}
             }
 
