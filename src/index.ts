@@ -146,8 +146,9 @@ export const node =
             return void toResponse(res, response)
         })
 
-        server.listen(port, (port) => {
-            if (port) callback(callback)
+        server.listen(port, (socket) => {
+            if (socket) callback(socket)
+            else console.error(`Failed to bind to port ${port}`)
         })
 
         return app
