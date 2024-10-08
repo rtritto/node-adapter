@@ -67,7 +67,7 @@ export const node =
                 for (const [name, index] of ids)
                     params[name] = req.getParameter(index)
 
-                const request = new Request(`http://a.aa${path}`, {
+                const request = new Request(`http://a.aa${path}?${q}`, {
                     body:
                         method !== 'GET' && method !== 'HEAD'
                             ? await readStream(req, res)
@@ -81,13 +81,19 @@ export const node =
                     headers: {}
                 }
 
+                const url = request.url
+                const s = url.indexOf('/', 11)
+                const qi = url.indexOf('?', s + 1)
+
                 const context = {
                     ...app.decorator,
                     set,
                     params,
                     store: app.store,
                     request,
-                    query
+                    query,
+                    url,
+                    qi
                 } as Context
 
                 for (let i = 0; i < app.event.request.length; i++) {
